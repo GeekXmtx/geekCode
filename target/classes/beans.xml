@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.2.xsd
+http://www.springframework.org/schema/mvc ">
+
+    <!--基于Xml的装配-->
+    <!-- 使用构造器注入方式装配user实例 -->
+    <bean id="constructorUser" class="geekCode05.assembleBean.assembleBeanByXml.User">
+        <constructor-arg index="0" value="极客"/>
+        <constructor-arg index="1" value="小茗"/>
+        <constructor-arg index="2">
+            <list>
+                <value>"小茗"</value>
+                <value>"极客"</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <!-- 使用设值注入方式装配User实例 -->
+    <bean id="propertyUser" class="geekCode05.assembleBean.assembleBeanByXml.User">
+        <property name="username" value="小茗同学"></property>
+        <property name="password" value="geekXm"></property>
+        <property name="list">
+            <list>
+                <value>"极客"</value>
+                <value>"小茗"</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--基于Annotation的装配-->
+    <!-- 使用context命名空间，在配置文件中开启相应的注解处理器 -->
+    <context:annotation-config/>
+    <!-- 使用 context 命名空间，通知 Spring 扫描指定包下所有Bean类，进行注解解析。如果不用这种方式，可以像下面注释的一样，分别定义3个Bean实例 -->
+    <context:component-scan base-package="geekCode05.assembleBean.assembleBeanByAnnotation"/>
+
+    <!-- <bean id="userDao" class="geekCode05.assembleBean.assembleBeanByAnnotation"/>
+    <bean id="userService" class="geekCode05.assembleBean.assembleBeanByAnnotation"/>
+    <bean id="userController" class="geekCode05.assembleBean.assembleBeanByAnnotation"/> -->
+</beans>

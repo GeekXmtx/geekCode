@@ -23,9 +23,7 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.*;
-import java.util.logging.Filter;
 import java.util.stream.Collectors;
 
 import static io.netty.handler.codec.http.HttpResponseStatus.NO_CONTENT;
