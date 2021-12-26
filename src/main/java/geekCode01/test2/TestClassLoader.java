@@ -4,6 +4,8 @@ import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import static java.lang.ClassLoader.getSystemClassLoader;
+
 /**
  * 自定义一个 Classloader，加载一个 Hello.xlass 文件，执行 hello 方法，
  * 此文件内容是一个 Hello.class 文件所有字节（x=255-x）处理后的文件。文件群里提供。
@@ -23,7 +25,7 @@ public class TestClassLoader extends ClassLoader {
     @Override
     public Class<?> findClass(String name) throws ClassNotFoundException {
         // 读取resources目录下的文件
-        String loadPath = ClassLoader.getSystemClassLoader().getResource("Hello.xlass").getPath();
+        String loadPath = getSystemClassLoader().getResource("Hello.xlass").getPath();
         byte[] classData = getClassData(loadPath);
         if (classData == null) {
             throw new ClassNotFoundException();
